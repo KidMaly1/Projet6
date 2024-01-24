@@ -1,9 +1,11 @@
 
 const reponse = await fetch("http://localhost:5678/api/works");
-const works =  await reponse.json();
+const allworks =  await reponse.json();
 
 
 const gallerycontainer = document.querySelector(".gallery")
+
+function genererTravaux(works) {
 
 for (let i = 0; i < works.length; i++) {
     
@@ -25,16 +27,58 @@ for (let i = 0; i < works.length; i++) {
     
     
     }
+}
 
-const btnTri = document.querySelector(".btn-objets")
-btnTri.addEventListener("click", function () {
-    const filtreObjets = works.filter(figure)
-    return figure.name == "Objets";
-    console.log(filtreObjets)
+genererTravaux(allworks);
+
+
+
+
+const btnTous = document.querySelector(".btn-tous")
+btnTous.addEventListener("click", function () {
+    genererTravaux(allworks)
+    
 })
 
 
+const btnObjets = document.querySelector(".btn-objets")
+btnObjets.addEventListener("click", function () {
+    
+    const filtreObjets = allworks.filter((work) =>
+    work.category.id == 1);
+    
+    document.querySelector(".gallery").innerHTML = '';
 
+   
+
+    genererTravaux(filtreObjets);
+})
+
+const btnAppartements = document.querySelector(".btn-appartements")
+btnAppartements.addEventListener("click", function () {
+
+    const filtreAppartements = allworks.filter((work) =>
+    work.category.id == 2);
+
+    document.querySelector(".gallery").innerHTML = '';
+
+    genererTravaux(filtreAppartements);
+    
+    
+})
+
+const btnHotels = document.querySelector(".btn-hotels")
+btnHotels.addEventListener("click", function () {
+
+    const filtreHotels = allworks.filter((work) =>
+    work.category.id == 3);
+
+    document.querySelector(".gallery").innerHTML = '';
+
+    genererTravaux(filtreHotels);
+    
+    
+})
 
     
 
