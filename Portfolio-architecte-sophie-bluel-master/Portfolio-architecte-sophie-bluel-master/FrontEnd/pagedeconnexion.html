@@ -26,16 +26,22 @@
     </header>
 
 	<main>
+
 		<h2>Log In</h2>
-		<div class="login">
-			<form action="#" method="post">
+		
+		<div class="form-container">
+
+			<form class="formulaire">
+
 				<label for="name">E-mail</label>
 				<input type="text" name="name" id="email">
 				<label for="password">Mot de passe</label>
-				<input type="password" name="email" id="password">
-				<input type="submit" value="Se connecter" id="login">
+				<input type="password" name="password" id="password">
+				<input type="submit" value="Se connecter" id="login" onclick="userLogin()">
 				<a href="#">Mot de passe oublié</a>
+
 			</form>
+
 		</div>
 		
 	</main>

@@ -1,11 +1,14 @@
 
 const reponse = await fetch("http://localhost:5678/api/works");
 const allworks =  await reponse.json();
-
+const reponsecategories = await fetch("http://localhost:5678/api/categories");
+const categories =  await reponsecategories.json();
+console.log(categories)
 
 const gallerycontainer = document.querySelector(".gallery")
 
 function genererTravaux(works) {
+    gallerycontainer.innerHTML = '';
 
 for (let i = 0; i < works.length; i++) {
     
@@ -19,7 +22,7 @@ for (let i = 0; i < works.length; i++) {
 
     const elementsTitle = document.createElement("figcaption")
     elementsTitle.innerText = works[i].title;
-    console.log(elementsTitle)
+    
     
     
     elements.appendChild(elementsImage);
@@ -33,56 +36,62 @@ genererTravaux(allworks);
 
 
 
+function boutonCategories () {
 
-const btnTous = document.querySelector(".btn-tous")
-btnTous.addEventListener("click", function () {
-    genererTravaux(allworks)
     
-})
+    const btnCategories = document.querySelector(".categories")
+    console.log(btnCategories)
+    const bouton = document.createElement("input");
+    bouton.setAttribute("data-index", "0");
+    bouton.type = "button";
+    bouton.value = "Tous";
+    bouton.id = "btn-0";
+        console.log(bouton)
+    btnCategories.appendChild(bouton)
+
+    for (let i = 0; i < categories.length; i++) {
+
+        
+    const bouton = document.createElement("input");
+    bouton.type = "button";
+    bouton.value = categories[i].name;
+    bouton.id = "btn-"+categories[i].id;
+        console.log(bouton)
+
+        bouton.setAttribute("data-index", categories[i].id);
+
+    btnCategories.appendChild(bouton)
+
+    }
 
 
-const btnObjets = document.querySelector(".btn-objets")
-btnObjets.addEventListener("click", function () {
+    const btns = document.querySelectorAll(".categories input")
+for (let i = 0; i < btns.length; i++) {
+
+
+btns[i].addEventListener("click", filtres)
+}
+}
+boutonCategories()
+
+function filtres () {
+
+    console.log(this)
+    console.log(this.getAttribute("data-index"))
+
+    const category_id = this.getAttribute("data-index")
+    if (category_id == "0") {
+        genererTravaux(allworks)
+    } else {
+        const filtreHotels = allworks.filter((work) =>
+    work.category.id == category_id);
+
     
-    const filtreObjets = allworks.filter((work) =>
-    work.category.id == 1);
-    
-    document.querySelector(".gallery").innerHTML = '';
-
-   
-
-    genererTravaux(filtreObjets);
-})
-
-const btnAppartements = document.querySelector(".btn-appartements")
-btnAppartements.addEventListener("click", function () {
-
-    const filtreAppartements = allworks.filter((work) =>
-    work.category.id == 2);
-
-    document.querySelector(".gallery").innerHTML = '';
-
-    genererTravaux(filtreAppartements);
-    
-    
-})
-
-const btnHotels = document.querySelector(".btn-hotels")
-btnHotels.addEventListener("click", function () {
-
-    const filtreHotels = allworks.filter((work) =>
-    work.category.id == 3);
-
-    document.querySelector(".gallery").innerHTML = '';
 
     genererTravaux(filtreHotels);
     
-    
-})
-
-    
-
-
+    }
+}
 
 
 

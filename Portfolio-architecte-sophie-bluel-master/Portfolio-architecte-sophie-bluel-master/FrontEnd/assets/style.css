@@ -218,21 +218,31 @@ main h2 {
     justify-content: center;
 }
 
-.login {
+.form-container {
 	display: flex;
     justify-content: center;
 }
 
-.login form {
+.form-container form {
 	display: flex;
 	flex-direction: column;
 	margin: 20px;
 }
 
-.login #name {
+.form-container #name {
 	margin-bottom: 10px;
 }
 
-.login a {
+.form-container a {
 	text-align: center;
+}
+
+.formulaire input[type="text"] {
+	width: 350px;
+	height: 30px;
+}
+
+.formulaire input[type="password"] {
+	width: 350px;
+	height: 30px;
 }
