@@ -246,3 +246,22 @@ main h2 {
 	width: 350px;
 	height: 30px;
 }
+
+/** Fenêtre modale*/
+.openModal {
+	width: 60px;
+}
+
+dialog {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	height: 300px;
+	border:20px;
+	border-radius: 10px;
+}
+
+.modalHeader {
+	display: flex;
+	justify-content: space-between;
+}

@@ -1,46 +1,64 @@
 
 // Récupérer le token depuis le swagger
-const jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4";
+const jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4";
 
 
-const form = document.querySelector('formulaire');
-btnSubmit = document.getElementById('login');
+const form = document.querySelector('.formulaire');
+console.log(form)
+const btnSubmit = document.getElementById('login');
 
-function userLogin() {
+form.addEventListener("submit", userLogin )
+
+function userLogin(event) {
+    event.preventDefault();
     
         //Récupérer les valeurs des champs 
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
+        
 
         //Vérification des valeurs dans les champs
-        if (email.value == "string" && password.value == "string"){
-            window.location.assign = ("index.html")
+        if (userAuth(email, password)){
+            window.location.assign("index.html")
+            reponse.status(200).json({ jwt})
         }
         else {
-            alert("Error")
+            alert("Error"+email.value+password.value)
+            reponse.status(401).json({ message:"Not authorized"})
         }
     }
 
-         // Objet pour la requête
-         const data = {
-             email:email,
-             password:password,
-         };
-     
-         //Création de la charge utile au format JSON
-         const chargeUtile = JSON.stringify(data);
-
-         //Appel de la fonction fetch
-         fetch("http://localhost:5678/api/users/login"),{
-             method: "POST",
-             headers: {"Content-Type": "application/json" },
-             body: chargeUtile
-         }
- 
+         
      ;
   
+    async function userAuth(email, password) {
+        // Objet pour la requête
+        const data = {
+                "email":email,
+                "password":password,
+        };
 
+        //Création de la charge utile au format JSON
+        const chargeUtile = JSON.stringify(data);
 
+        
+        
+        //Appel de la fonction fetch
+        const reponse = await fetch("http://localhost:5678/api/users/login",{
+            method: "POST",
+            headers: {"Content-Type": "application/json" },
+            body: chargeUtile
+        })
+
+        
+        console.log(reponse)
+        const allworks =  await reponse.json();
+        console.log(allworks)
+        alert ("Err")
+        return false
+        }
+
+        
 
 
 

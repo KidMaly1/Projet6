@@ -93,8 +93,29 @@ function filtres () {
     }
 }
 
+function connected() {
+    // Code pour vérifier si l'utilisateur est connecté
+    return true;
+}
 
+// Après que l'utilisateur se soit connecté avec succès
+if (connected()) {
+    // Modifie l'élément "login" en "logout"
+    document.getElementById("loginLogout").textContent = "logout";
+}
 
+// Fenêtre modale 
+const modal = document.getElementById("modal");
+const openModal = document.querySelector(".openModal");
+const closeModal = document.querySelector(".close-button");
+
+openModal.addEventListener("click", () => {
+    modal.showModal();
+})
+
+closeModal.addEventListener("click", () => {
+    modal.remove();
+})
 
 
 

@@ -18,7 +18,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li id="loginLogout">login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,6 +35,19 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
+
+	<button class="openModal">Modifier</button>
+
+	<dialog class="modal" id="modal">
+
+		<div class="modalHeader">
+			<h3>Galerie photo</h3>
+			<button class="close-button">&times;</button>
+		</div>
+		<input type="submit" value="Ajouter une photo">
+
+	</dialog>
+
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
 
