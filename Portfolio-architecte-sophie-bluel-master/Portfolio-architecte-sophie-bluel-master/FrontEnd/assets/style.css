@@ -253,8 +253,8 @@ main h2 {
 }
 
 dialog {
-	display: flex;
-	flex-direction: column;
+	
+	
 	width: 600px;
 	height: 300px;
 	border:20px;
@@ -264,4 +264,8 @@ dialog {
 .modalHeader {
 	display: flex;
 	justify-content: space-between;
+}
+
+#formulaireMessage {
+	color: red;
 }
