@@ -95,13 +95,27 @@ function filtres () {
 
 function connected() {
     // Code pour vérifier si l'utilisateur est connecté
-    return true;
+    const token = localStorage.getItem("token")
+    console.log(token)
+    if (token){
+        console.log("connected")
+        return true
+    }
+    
+    console.log("not connected")
+    return false
 }
 
 // Après que l'utilisateur se soit connecté avec succès
 if (connected()) {
     // Modifie l'élément "login" en "logout"
     document.getElementById("loginLogout").textContent = "logout";
+
+document.getElementById("loginLogout").addEventListener("click", (event) => {
+    event.preventDefault
+    localStorage.removeItem("token")
+    window.location.assign("index.html")
+})
 }
 
 // Fenêtre modale 
@@ -116,7 +130,4 @@ openModal.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
     modal.close("close");
 })
-
-
-
 

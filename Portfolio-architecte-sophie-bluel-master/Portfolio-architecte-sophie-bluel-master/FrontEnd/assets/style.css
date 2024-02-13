@@ -252,7 +252,7 @@ main h2 {
 	width: 60px;
 }
 
-dialog {
+.modal {
 	
 	
 	width: 600px;
@@ -263,7 +263,16 @@ dialog {
 
 .modalHeader {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+}
+
+.close-button {
+	
+	justify-content: flex-end;
+}
+
+.modal input {
+	justify-content: center;
 }
 
 #formulaireMessage {

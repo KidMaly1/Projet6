@@ -17,54 +17,7 @@ async function userLogin(event) {
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
         
-
-        //Vérification des valeurs dans les champs
         
-        const data = {
-            "email":email,
-            "password":password,
-    };
-
-    //Création de la charge utile au format JSON
-    const chargeUtile = JSON.stringify(data);
-
-    
-    
-    //Appel de la fonction fetch
-    const reponse = await fetch("http://localhost:5678/api/users/login",{
-        method: "POST",
-        headers: {"Content-Type": "application/json" },
-        body: chargeUtile
-    })
-
-    
-    console.log(reponse)
-    console.log(reponse.status)
-    if (
-        reponse.status !== 200
-    ){   
-    const message =  await reponse.json();
-
-    
-    const errorMessage = document.createElement("div")
-    errorMessage.innerText = message.message;
-    messageContainer.appendChild(errorMessage);
-    return false
-    }
-
-
-        else {
-            window.location.assign("index.html")
-            reponse.status(200).json({ jwt})
-
-        }
-        
-    }
-
-         
-     ;
-  
-    async function userAuth(email, password) {
         // Objet pour la requête
         const data = {
                 "email":email,
@@ -77,35 +30,46 @@ async function userLogin(event) {
         
         
         //Appel de la fonction fetch
-        const reponse = await fetch("http://localhost:5678/api/users/login",{
+        /*const reponse = await fetch("http://localhost:5678/api/users/login",{
             method: "POST",
             headers: {"Content-Type": "application/json" },
             body: chargeUtile
-        })
+        
 
         
         console.log(reponse)
-        console.log(reponse.status)
-        if (
-            reponse.status !== 200
-        ){   
-        const message =  await reponse.json();
+        console.log(reponse.status)*/
 
-        const messageContainer = document.getElementById("formulaireMessage")
-        const errorMessage = document.createElement("div")
-        errorMessage.innerText = message.message;
-        messageContainer.appendChild(errorMessage);
-        return false
-        }
+        fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: chargeUtile
+    }).then(function (response) {
+        if (response.status != 200) {
+            //afficher le message d’erreur
+            console.log(response.json())
 
-        const message =  await reponse.json();
-        console.log(message)
-        alert ("Err")
-        return false
+            const errorMessage = document.createElement("div")
+            errorMessage.innerText = "erreur d'authentification";
+            messageContainer.appendChild(errorMessage);
+        } else {
+            return response.json();
         }
+    }).then(function (data) {
+        console.log(data)
+        localStorage.setItem("token", data.token);
+        window.location.assign("index.html")
+    }
+    )}
+
+    
+       
+        
+        
 
         
 
+       
 
 
 
