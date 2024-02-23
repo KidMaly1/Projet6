@@ -4,6 +4,8 @@ const allworks =  await reponse.json();
 const reponsecategories = await fetch("http://localhost:5678/api/categories");
 const categories =  await reponsecategories.json();
 console.log(categories)
+export {reponse, allworks, reponsecategories, categories};
+
 
 const gallerycontainer = document.querySelector(".gallery")
 
@@ -118,16 +120,8 @@ document.getElementById("loginLogout").addEventListener("click", (event) => {
 })
 }
 
-// Fenêtre modale 
-const modal = document.getElementById("modal");
-const openModal = document.querySelector(".openModal");
-const closeModal = document.querySelector(".close-button");
 
-openModal.addEventListener("click", () => {
-    modal.showModal();
-})
 
-closeModal.addEventListener("click", () => {
-    modal.close("close");
-})
+
+
 

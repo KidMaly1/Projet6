@@ -253,26 +253,58 @@ main h2 {
 }
 
 .modal {
-	
-	
+	display: flex;
+	flex-direction: column;
 	width: 600px;
 	height: 300px;
 	border:20px;
 	border-radius: 10px;
 }
 
-.modalHeader {
+.modalContent {
+	justify-content: center;
+	height: 180px;
+}
+
+.modalHead {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.modalHead h3 {
 	display: flex;
 	justify-content: center;
 }
 
-.close-button {
-	
+.modalGallery {
+	display: flex;
+	flex-wrap: wrap;
+    padding-left: 25px;
+}
+
+
+.modalGallery img {
+	width: 60px;
+	padding: 5px;
+}
+
+.modalGallery i {
+	position: absolute;
+    left: 9em;
+    top: 6em;
+    font-size: 10px;
+	color: white;
+}
+
+#close-button {
+	display: flex;
 	justify-content: flex-end;
+	font-size: 20px;
 }
 
 .modal input {
-	justify-content: center;
+	margin-top: 80px;
 }
 
 #formulaireMessage {

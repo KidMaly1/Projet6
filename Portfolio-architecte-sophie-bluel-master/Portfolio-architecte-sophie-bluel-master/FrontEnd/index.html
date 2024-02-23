@@ -7,9 +7,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<script src="https://kit.fontawesome.com/8f2991717e.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script type="module" src="assets/JS/script.js" async>	</script>
+	<script type="module" src="assets/JS/modal.js" async>	</script>
 </head>
 <body>
 <header>
@@ -41,11 +44,26 @@
 
 	<dialog class="modal" id="modal">
 
-		<div class="modalHeader">
-			<h3>Galerie photo</h3>
-			<button class="close-button">&times;</button>
+		<div class="modalContent">
+
+			<div class="modalHead">
+
+					<i class="fa-solid fa-xmark" id="close-button"></i>
+					<h3>Galerie photo</h3>
+					
+			</div>
+			
+			<div class="modalGallery">
+				
+				<i class="fa-solid fa-trash-can" id="trashButton"></i>
+				
+			</div>
+			
 		</div>
-		<input type="submit" value="Ajouter une photo">
+			
+				<input type="submit" value="Ajouter une photo">
+			
+		
 
 	</dialog>
 
