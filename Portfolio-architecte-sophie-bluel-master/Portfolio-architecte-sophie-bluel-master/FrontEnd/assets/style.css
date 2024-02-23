@@ -290,11 +290,11 @@ main h2 {
 }
 
 .modalGallery i {
-	position: absolute;
+	
     left: 9em;
     top: 6em;
     font-size: 10px;
-	color: white;
+	color: black;
 }
 
 #close-button {
